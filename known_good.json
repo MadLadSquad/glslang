@@ -13,6 +13,7 @@
       "subrepo" : "MadLadSquad/SPIRV-Headers",
       "subdir" : "External/spirv-tools/external/spirv-headers",
       "commit" : "master"
+      "commit" : "d13b52222c39a7e9a401b44646f0ca3a640fbd47"
     }
   ]
 }
