@@ -3,7 +3,7 @@ name: Create automatic pr
 env:
   REPO_NAME: "KhronosGroup/glslang"
   BRANCH: "master"
-  UPSTREAM_BRANCH: "master"
+  UPSTREAM_BRANCH: "main"
   NAME: "glslang"
   
 on:
