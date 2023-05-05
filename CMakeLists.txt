@@ -35,9 +35,6 @@ project(glslang)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-# Enable compile commands database
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -106,18 +103,6 @@ else()
     option(ENABLE_PCH "Enables Precompiled header" ON)
 endif()
 option(ENABLE_CTEST "Enables testing" ON)
-
-if(ENABLE_GLSLANG_INSTALL AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT AND WIN32)
-    set(CMAKE_INSTALL_PREFIX "install" CACHE STRING "..." FORCE)
-endif()
-
-option(USE_CCACHE "Use ccache" OFF)
-if(USE_CCACHE)
-    find_program(CCACHE_FOUND ccache)
-    if(CCACHE_FOUND)
-        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-    endif()
-endif()
 
 if(ENABLE_CTEST)
     include(CTest)
