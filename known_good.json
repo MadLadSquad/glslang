@@ -5,7 +5,11 @@
       "site" : "github",
       "subrepo" : "MadLadSquad/SPIRV-Tools",
       "subdir" : "External/spirv-tools",
+<<<<<<< HEAD
       "commit" : "master"
+=======
+      "commit": "afaf8fda2ad0364655909b56c8b634ce89095bb5"
+>>>>>>> 3f615ad93ea58264fe6f06995178691ec6b556a7
     },
     {
       "name" : "spirv-tools/external/spirv-headers",

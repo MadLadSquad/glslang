@@ -44,6 +44,7 @@ include(CMakeDependentOption)
 
 option(BUILD_SHARED_LIBS "Build Shared Libraries")
 option(BUILD_EXTERNAL "Build external dependencies in /External" ON)
+option(BUILD_WERROR "Enable warnings as errors (default is OFF)" OFF)
 
 set(LIB_TYPE STATIC)
 
@@ -69,7 +70,6 @@ endif()
 # Furthermore testing is equally problematic.
 if (IOS OR ANDROID)
     set(ENABLE_GLSLANG_BINARIES OFF)
-    set(SPIRV_SKIP_EXECUTABLES ON)
 
     set(ENABLE_CTEST OFF)
     set(BUILD_TESTING OFF)
@@ -114,7 +114,7 @@ if(ENABLE_CTEST)
 endif()
 
 if(ENABLE_HLSL)
-    add_definitions(-DENABLE_HLSL)
+    add_compile_definitions(ENABLE_HLSL)
 endif()
 
 if(WIN32)
@@ -175,6 +175,15 @@ elseif(MSVC)
 	else()
         string(REGEX REPLACE "/EHsc" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}") # Try to remove default /EHsc cxx_flag
         add_compile_options(/D_HAS_EXCEPTIONS=0)
+    endif()
+endif()
+
+# NOTE we could potentially replace this logic with COMPILE_WARNING_AS_ERROR if cmake minimum is bumped to >= 3.24
+if (BUILD_WERROR)
+    if (NOT MSVC)
+        add_compile_options(-Werror)
+    else()
+        add_compile_options(/WX)
     endif()
 endif()
 
@@ -293,8 +302,18 @@ else()
 endif()
 
 add_subdirectory(glslang)
+<<<<<<< HEAD
 add_subdirectory(OGLCompilersDLL)
 add_subdirectory(SPIRV)
+=======
+if(ENABLE_GLSLANG_BINARIES)
+    add_subdirectory(StandAlone)
+endif()
+add_subdirectory(SPIRV)
+if(ENABLE_CTEST)
+    add_subdirectory(gtests)
+endif()
+>>>>>>> 3f615ad93ea58264fe6f06995178691ec6b556a7
 
 if(ENABLE_CTEST AND BUILD_TESTING)
     # glslang-testsuite runs a bash script on Windows.
