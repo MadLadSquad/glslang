@@ -1,6 +1,7 @@
 {
   "commits" : [
     {
+<<<<<<< HEAD
       "name" : "spirv-tools",
       "site" : "github",
       "subrepo" : "MadLadSquad/SPIRV-Tools",
