@@ -97,7 +97,7 @@ option(GLSLANG_TESTS "Enable glslang testing" ${GLSLANG_TESTS_DEFAULT})
 # Always expose this as an option, so the defaults can be overridden.
 option(GLSLANG_ENABLE_INSTALL "Enable glslang installation" ${GLSLANG_ENABLE_INSTALL_DEFAULT})
 
-option(ENABLE_SPIRV "Enables SPIRV output support" OFF)
+option(ENABLE_SPIRV "Enables SPIRV output support" ON)
 option(ENABLE_SPVREMAPPER "Enables building of SPVRemapper" OFF)
 
 option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
