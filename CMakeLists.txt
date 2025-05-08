@@ -94,9 +94,9 @@ option(GLSLANG_TESTS "Enable glslang testing" ${GLSLANG_TESTS_DEFAULT})
 option(GLSLANG_ENABLE_INSTALL "Enable glslang installation" ${GLSLANG_ENABLE_INSTALL_DEFAULT})
 
 option(ENABLE_SPIRV "Enables SPIRV output support" ON)
-option(ENABLE_SPVREMAPPER "Enables building of SPVRemapper" ON)
+option(ENABLE_SPVREMAPPER "Enables building of SPVRemapper" OFF)
 
-option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" ON)
+option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
 
 option(ENABLE_GLSLANG_JS "If using Emscripten, build glslang.js. Otherwise, builds a sample executable for binary-size testing.")
 cmake_dependent_option(ENABLE_EMSCRIPTEN_SINGLE_FILE
@@ -108,7 +108,7 @@ cmake_dependent_option(ENABLE_EMSCRIPTEN_ENVIRONMENT_NODE
     OFF "ENABLE_GLSLANG_JS AND EMSCRIPTEN"
     OFF)
 
-option(ENABLE_HLSL "Enables HLSL input support" ON)
+option(ENABLE_HLSL "Enables HLSL input support" OFF)
 option(ENABLE_RTTI "Enables RTTI")
 option(ENABLE_EXCEPTIONS "Enables Exceptions")
 cmake_dependent_option(ENABLE_OPT "Enables spirv-opt capability if present" ON "ENABLE_SPIRV" OFF)
